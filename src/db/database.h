@@ -9,7 +9,7 @@ class Database
 public:
     static Database& getInstance();
     bool open();
-    bool addUser(const QString& user);
+    bool addUser(const QString &newUserNickName, const QString &newUserFirstName, const QString &newUserLastName);
 
     Database(Database const&)       = delete;
     void operator=(Database const&) = delete;

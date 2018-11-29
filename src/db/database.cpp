@@ -41,14 +41,16 @@ bool Database::open()
 }
 
 
-bool Database::addUser(const QString& newUser)
+bool Database::addUser(const QString& newUserNickName, const QString& newUserFirstName, const QString& newUserLastName)
 {
     bool success = false;
 
    // you should check if args are ok first...
    QSqlQuery query;
-   query.prepare("INSERT INTO user (newUser) VALUES (:newUser)");
-   query.bindValue(":newUser", newUser);
+   query.prepare("INSERT INTO user (nickName, firstName, lastName) VALUES (:newUserNickName, :newUserFirstName, :newUserLastName)");
+   query.bindValue(":newUserNickName", newUserNickName);
+   query.bindValue(":newUserFirstName", newUserFirstName);
+   query.bindValue(":newUserLastName", newUserLastName);
    if(query.exec())
    {
        success = true;
