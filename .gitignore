@@ -1,3 +1,4 @@
 */*.o
 */.qmake.stash
 src/FooRa
+src/*.pro.user
