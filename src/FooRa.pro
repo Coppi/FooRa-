@@ -11,7 +11,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = FooRa
 TEMPLATE = app
 
-LIBS += -lsqlite3
+#LIBS += -lsqlite3
 
 SOURCES  += main.cpp\
             mainwindow.cpp \
@@ -21,4 +21,5 @@ HEADERS  += mainwindow.h \
             db/database.h
 
 FORMS    += mainwindow.ui \
-            adduser.ui
+            adduser.ui \
+    addmatch.ui
