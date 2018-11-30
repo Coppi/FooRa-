@@ -23,6 +23,8 @@ private slots:
     void on_actionAdd_Match_triggered();
 
     void addUserPushButton_triggered();
+    void addMatchButton_triggered();
+
 
 private:
     Ui::MainWindow *ui;

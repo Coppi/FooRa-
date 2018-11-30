@@ -15,17 +15,16 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_AddMatchDialog
 {
 public:
-    QDialogButtonBox *buttonBox;
     QFrame *redFrame;
     QComboBox *comboBoxRedOffense;
     QLabel *labelRedDefense;
@@ -42,17 +41,14 @@ public:
     QLabel *labelTeamBlue;
     QLabel *labelBlueScore;
     QComboBox *comboBoxBlueScore;
+    QPushButton *cancelButton;
+    QPushButton *addMatchButton;
 
     void setupUi(QDialog *AddMatchDialog)
     {
         if (AddMatchDialog->objectName().isEmpty())
             AddMatchDialog->setObjectName(QStringLiteral("AddMatchDialog"));
         AddMatchDialog->resize(541, 261);
-        buttonBox = new QDialogButtonBox(AddMatchDialog);
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(10, 210, 341, 32));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
         redFrame = new QFrame(AddMatchDialog);
         redFrame->setObjectName(QStringLiteral("redFrame"));
         redFrame->setGeometry(QRect(20, 20, 241, 171));
@@ -127,6 +123,12 @@ public:
         comboBoxBlueScore->setGeometry(QRect(80, 140, 51, 27));
         comboBoxBlueScore->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
+        cancelButton = new QPushButton(AddMatchDialog);
+        cancelButton->setObjectName(QStringLiteral("cancelButton"));
+        cancelButton->setGeometry(QRect(120, 220, 99, 27));
+        addMatchButton = new QPushButton(AddMatchDialog);
+        addMatchButton->setObjectName(QStringLiteral("addMatchButton"));
+        addMatchButton->setGeometry(QRect(320, 220, 99, 27));
         QWidget::setTabOrder(comboBoxRedDefense, comboBoxRedOffense);
         QWidget::setTabOrder(comboBoxRedOffense, comboBoxRedScore);
         QWidget::setTabOrder(comboBoxRedScore, comboBoxBlueDefense);
@@ -134,8 +136,6 @@ public:
         QWidget::setTabOrder(comboBoxBlueOffense, comboBoxBlueScore);
 
         retranslateUi(AddMatchDialog);
-        QObject::connect(buttonBox, SIGNAL(accepted()), AddMatchDialog, SLOT(accept()));
-        QObject::connect(buttonBox, SIGNAL(rejected()), AddMatchDialog, SLOT(reject()));
 
         QMetaObject::connectSlotsByName(AddMatchDialog);
     } // setupUi
@@ -151,6 +151,8 @@ public:
         labelBlueOffense->setText(QApplication::translate("AddMatchDialog", "Offense", 0));
         labelTeamBlue->setText(QApplication::translate("AddMatchDialog", "Team Blue", 0));
         labelBlueScore->setText(QApplication::translate("AddMatchDialog", "Score", 0));
+        cancelButton->setText(QApplication::translate("AddMatchDialog", "Cancel", 0));
+        addMatchButton->setText(QApplication::translate("AddMatchDialog", "Add Match", 0));
     } // retranslateUi
 
 };

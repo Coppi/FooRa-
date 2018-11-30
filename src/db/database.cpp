@@ -92,6 +92,59 @@ bool Database::addUser(const QString& newUserNickName, const QString& newUserFir
 }
 
 
+bool Database::addMatch(const QString& redTeamDefense,
+                        const QString& redTeamOffense,
+                        const QString& blueTeamDefense,
+                        const QString& blueTeamOffense,
+                        unsigned redScore,
+                        unsigned blueScore)
+{
+   bool success = false;
+
+   long redDefenseUserId = 0;
+   long redOffenseUserId = 0;
+   long blueDefenseUserId = 0;
+   long blueOffenseUserId = 0;
+
+   QSqlQuery query;
+   query.prepare("SELECT id FROM user WHERE name = :queryName");
+
+   query.bindValue(":queryName", redTeamDefense);
+   if (!query.exec() || !query.next())
+   {
+       qDebug() << "addMatch error:  " << query.lastError();
+       return false;
+   }
+   redDefenseUserId = query.value(0).toString().toLong();
+
+   query.bindValue(":queryName", redTeamOffense);
+   if (!query.exec() || !query.next())
+   {
+       qDebug() << "addMatch error:  " << query.lastError();
+       return false;
+   }
+   redOffenseUserId = query.value(0).toString().toLong();
+
+   query.bindValue(":queryName", blueTeamDefense);
+   if (!query.exec() || !query.next())
+   {
+       qDebug() << "addMatch error:  " << query.lastError();
+       return false;
+   }
+   blueDefenseUserId = query.value(0).toString().toLong();
+
+   query.bindValue(":queryName", blueTeamOffense);
+   if (!query.exec() || !query.next())
+   {
+       qDebug() << "addMatch error:  " << query.lastError();
+       return false;
+   }
+   blueOffenseUserId = query.value(0).toString().toLong();
+
+   return success;
+}
+
+
 QStringList Database::getUsers()
 {
     QStringList users;
