@@ -33,6 +33,19 @@ void MainWindow::on_actionAdd_Match_triggered()
     addMatchDialog->setModal(true);
     addMatchDialogForm.setupUi(addMatchDialog);
     addMatchDialog->show();
+
+    Database &db = Database::getInstance();
+    QStringList users = db.getUsers();
+
+    addMatchDialogForm.comboBoxBlueDefense->addItems(users);
+    addMatchDialogForm.comboBoxBlueOffense->addItems(users);
+    addMatchDialogForm.comboBoxRedDefense->addItems(users);
+    addMatchDialogForm.comboBoxRedOffense->addItems(users);
+
+    QStringList scores = {"0", "1", "2", "3","4", "5","6", "7","8", "9", "10"};
+    addMatchDialogForm.comboBoxBlueScore->addItems(scores);
+    addMatchDialogForm.comboBoxRedScore->addItems(scores);
+
 //    connect (addUserDialogForm.addUserClosePushButton, SIGNAL(clicked()),addUserDialog,SLOT(close()));
 //    connect (addUserDialogForm.addUserPushButton, SIGNAL(clicked()),this,SLOT(addUserPushButton_triggered()));
 }

@@ -51,8 +51,7 @@ bool Database::doesUserExist(const QString& userNickName)
    query.bindValue(":nickName", userNickName);
    if (!query.exec())
    {
-       qDebug() << "doesUserExist error:  "
-                << query.lastError();
+       qDebug() << "doesUserExist error:  " << query.lastError();
    }
    else
    {
@@ -75,7 +74,6 @@ bool Database::addUser(const QString& newUserNickName, const QString& newUserFir
 {
    bool success = false;
 
-   // you should check if args are ok first...
    QSqlQuery query;
    query.prepare("INSERT INTO user (name, firstName, lastName) VALUES (:newUserNickName, :newUserFirstName, :newUserLastName)");
    query.bindValue(":newUserNickName", newUserNickName);
@@ -87,10 +85,30 @@ bool Database::addUser(const QString& newUserNickName, const QString& newUserFir
    }
    else
    {
-       qDebug() << "addPerson error:  "
-                << query.lastError();
+       qDebug() << "addPerson error:  " << query.lastError();
    }
 
    return success;
 }
 
+
+QStringList Database::getUsers()
+{
+    QStringList users;
+
+    QSqlQuery query;
+    query.prepare("SELECT name FROM user");
+    if(query.exec())
+    {
+        while (query.next())
+        {
+            users.append(query.value(0).toString());
+        }
+    }
+    else
+    {
+        qDebug() << "getUsers error:  " << query.lastError();
+    }
+
+    return users;
+}

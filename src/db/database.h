@@ -12,6 +12,7 @@ public:
     bool open();
     bool doesUserExist(const QString& userNickName);
     bool addUser(const QString &newUserNickName, const QString &newUserFirstName, const QString &newUserLastName);
+    QStringList getUsers();
 
     Database(Database const&)       = delete;
     void operator=(Database const&) = delete;
