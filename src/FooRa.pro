@@ -24,4 +24,4 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
             adduser.ui \
-    addmatch.ui
+            addmatch.ui

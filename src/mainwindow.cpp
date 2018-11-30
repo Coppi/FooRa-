@@ -27,6 +27,16 @@ void MainWindow::on_actionAdd_User_triggered()
     connect (addUserDialogForm.addUserPushButton, SIGNAL(clicked()),this,SLOT(addUserPushButton_triggered()));
 }
 
+void MainWindow::on_actionAdd_Match_triggered()
+{
+    addMatchDialog = new QDialog;
+    addMatchDialog->setModal(true);
+    addMatchDialogForm.setupUi(addMatchDialog);
+    addMatchDialog->show();
+//    connect (addUserDialogForm.addUserClosePushButton, SIGNAL(clicked()),addUserDialog,SLOT(close()));
+//    connect (addUserDialogForm.addUserPushButton, SIGNAL(clicked()),this,SLOT(addUserPushButton_triggered()));
+}
+
 void MainWindow::addUserPushButton_triggered()
 {
     QString newUserNickName = addUserDialogForm.addUserNickNameLineEdit->text();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>AddMatchDialog</class>
+ <widget class="QDialog" name="AddMatchDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -280,12 +280,20 @@ color: rgb(0, 0, 0);</string>
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>comboBoxRedDefense</tabstop>
+  <tabstop>comboBoxRedOffense</tabstop>
+  <tabstop>comboBoxRedScore</tabstop>
+  <tabstop>comboBoxBlueDefense</tabstop>
+  <tabstop>comboBoxBlueOffense</tabstop>
+  <tabstop>comboBoxBlueScore</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>AddMatchDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -301,7 +309,7 @@ color: rgb(0, 0, 0);</string>
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>AddMatchDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

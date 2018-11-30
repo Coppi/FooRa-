@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -26,6 +26,7 @@ class Ui_MainWindow
 {
 public:
     QAction *actionAdd_User;
+    QAction *actionAdd_Match;
     QWidget *centralWidget;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -35,15 +36,20 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(862, 569);
+        MainWindow->resize(521, 254);
+        QIcon icon;
+        icon.addFile(QStringLiteral("../img/soccer-ball-220205_640.jpg"), QSize(), QIcon::Normal, QIcon::Off);
+        MainWindow->setWindowIcon(icon);
         actionAdd_User = new QAction(MainWindow);
         actionAdd_User->setObjectName(QStringLiteral("actionAdd_User"));
+        actionAdd_Match = new QAction(MainWindow);
+        actionAdd_Match->setObjectName(QStringLiteral("actionAdd_Match"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 862, 20));
+        menuBar->setGeometry(QRect(0, 0, 521, 25));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -53,6 +59,8 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         mainToolBar->addAction(actionAdd_User);
+        mainToolBar->addSeparator();
+        mainToolBar->addAction(actionAdd_Match);
 
         retranslateUi(MainWindow);
 
@@ -61,11 +69,12 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "FooRa!", 0));
         actionAdd_User->setText(QApplication::translate("MainWindow", "Add User", 0));
 #ifndef QT_NO_TOOLTIP
         actionAdd_User->setToolTip(QApplication::translate("MainWindow", "Add a new user", 0));
 #endif // QT_NO_TOOLTIP
+        actionAdd_Match->setText(QApplication::translate("MainWindow", "Add Match", 0));
     } // retranslateUi
 
 };

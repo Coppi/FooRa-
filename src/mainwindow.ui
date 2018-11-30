@@ -6,12 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>862</width>
-    <height>569</height>
+    <width>521</width>
+    <height>254</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>FooRa!</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../img/soccer-ball-220205_640.jpg</normaloff>../img/soccer-ball-220205_640.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
@@ -19,8 +23,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>862</width>
-     <height>20</height>
+     <width>521</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -32,6 +36,8 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionAdd_User"/>
+   <addaction name="separator"/>
+   <addaction name="actionAdd_Match"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAdd_User">
@@ -40,6 +46,11 @@
    </property>
    <property name="toolTip">
     <string>Add a new user</string>
+   </property>
+  </action>
+  <action name="actionAdd_Match">
+   <property name="text">
+    <string>Add Match</string>
    </property>
   </action>
  </widget>

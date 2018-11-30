@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Dialog
+class Ui_AddMatchDialog
 {
 public:
     QDialogButtonBox *buttonBox;
@@ -43,17 +43,17 @@ public:
     QLabel *labelBlueScore;
     QComboBox *comboBoxBlueScore;
 
-    void setupUi(QDialog *Dialog)
+    void setupUi(QDialog *AddMatchDialog)
     {
-        if (Dialog->objectName().isEmpty())
-            Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(541, 261);
-        buttonBox = new QDialogButtonBox(Dialog);
+        if (AddMatchDialog->objectName().isEmpty())
+            AddMatchDialog->setObjectName(QStringLiteral("AddMatchDialog"));
+        AddMatchDialog->resize(541, 261);
+        buttonBox = new QDialogButtonBox(AddMatchDialog);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(10, 210, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        redFrame = new QFrame(Dialog);
+        redFrame = new QFrame(AddMatchDialog);
         redFrame->setObjectName(QStringLiteral("redFrame"));
         redFrame->setGeometry(QRect(20, 20, 241, 171));
         redFrame->setStyleSheet(QStringLiteral("background-color: rgb(255, 75, 75);"));
@@ -90,7 +90,7 @@ public:
         comboBoxRedScore->setGeometry(QRect(80, 140, 51, 27));
         comboBoxRedScore->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
-        blueFrame = new QFrame(Dialog);
+        blueFrame = new QFrame(AddMatchDialog);
         blueFrame->setObjectName(QStringLiteral("blueFrame"));
         blueFrame->setGeometry(QRect(280, 20, 241, 171));
         blueFrame->setStyleSheet(QStringLiteral("background-color: rgb(65, 115, 255);"));
@@ -127,31 +127,36 @@ public:
         comboBoxBlueScore->setGeometry(QRect(80, 140, 51, 27));
         comboBoxBlueScore->setStyleSheet(QLatin1String("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 0, 0);"));
+        QWidget::setTabOrder(comboBoxRedDefense, comboBoxRedOffense);
+        QWidget::setTabOrder(comboBoxRedOffense, comboBoxRedScore);
+        QWidget::setTabOrder(comboBoxRedScore, comboBoxBlueDefense);
+        QWidget::setTabOrder(comboBoxBlueDefense, comboBoxBlueOffense);
+        QWidget::setTabOrder(comboBoxBlueOffense, comboBoxBlueScore);
 
-        retranslateUi(Dialog);
-        QObject::connect(buttonBox, SIGNAL(accepted()), Dialog, SLOT(accept()));
-        QObject::connect(buttonBox, SIGNAL(rejected()), Dialog, SLOT(reject()));
+        retranslateUi(AddMatchDialog);
+        QObject::connect(buttonBox, SIGNAL(accepted()), AddMatchDialog, SLOT(accept()));
+        QObject::connect(buttonBox, SIGNAL(rejected()), AddMatchDialog, SLOT(reject()));
 
-        QMetaObject::connectSlotsByName(Dialog);
+        QMetaObject::connectSlotsByName(AddMatchDialog);
     } // setupUi
 
-    void retranslateUi(QDialog *Dialog)
+    void retranslateUi(QDialog *AddMatchDialog)
     {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", 0));
-        labelRedDefense->setText(QApplication::translate("Dialog", "Defense", 0));
-        labelRedOffense->setText(QApplication::translate("Dialog", "Offense", 0));
-        labelTeamRed->setText(QApplication::translate("Dialog", "Team Red", 0));
-        labelRedScore->setText(QApplication::translate("Dialog", "Score", 0));
-        labelBlueDefense->setText(QApplication::translate("Dialog", "Defense", 0));
-        labelBlueOffense->setText(QApplication::translate("Dialog", "Offense", 0));
-        labelTeamBlue->setText(QApplication::translate("Dialog", "Team Blue", 0));
-        labelBlueScore->setText(QApplication::translate("Dialog", "Score", 0));
+        AddMatchDialog->setWindowTitle(QApplication::translate("AddMatchDialog", "Dialog", 0));
+        labelRedDefense->setText(QApplication::translate("AddMatchDialog", "Defense", 0));
+        labelRedOffense->setText(QApplication::translate("AddMatchDialog", "Offense", 0));
+        labelTeamRed->setText(QApplication::translate("AddMatchDialog", "Team Red", 0));
+        labelRedScore->setText(QApplication::translate("AddMatchDialog", "Score", 0));
+        labelBlueDefense->setText(QApplication::translate("AddMatchDialog", "Defense", 0));
+        labelBlueOffense->setText(QApplication::translate("AddMatchDialog", "Offense", 0));
+        labelTeamBlue->setText(QApplication::translate("AddMatchDialog", "Team Blue", 0));
+        labelBlueScore->setText(QApplication::translate("AddMatchDialog", "Score", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Dialog: public Ui_Dialog {};
+    class AddMatchDialog: public Ui_AddMatchDialog {};
 } // namespace Ui
 
 QT_END_NAMESPACE
