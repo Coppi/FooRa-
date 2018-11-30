@@ -29,7 +29,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="redFrame">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -38,13 +38,16 @@
      <height>171</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 75, 75);</string>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QComboBox" name="comboBox_2">
+   <widget class="QComboBox" name="comboBoxRedOffense">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -53,8 +56,12 @@
       <height>27</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="labelRedDefense">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -62,12 +69,15 @@
       <width>67</width>
       <height>17</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Defense</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="labelRedOffense">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -76,11 +86,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Offense</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
+   <widget class="QComboBox" name="comboBoxRedDefense">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -89,8 +102,12 @@
       <height>27</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="labelTeamRed">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -99,11 +116,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Team Red</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_13">
+   <widget class="QLabel" name="labelRedScore">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -112,11 +132,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Score</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_9">
+   <widget class="QComboBox" name="comboBoxRedScore">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -125,9 +148,13 @@
       <height>27</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+    </property>
    </widget>
   </widget>
-  <widget class="QFrame" name="frame_2">
+  <widget class="QFrame" name="blueFrame">
    <property name="geometry">
     <rect>
      <x>280</x>
@@ -136,13 +163,16 @@
      <height>171</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(65, 115, 255);</string>
+   </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
    </property>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QComboBox" name="comboBox_7">
+   <widget class="QComboBox" name="comboBoxBlueOffense">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -151,8 +181,12 @@
       <height>27</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="label_10">
+   <widget class="QLabel" name="labelBlueDefense">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -160,12 +194,15 @@
       <width>67</width>
       <height>17</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Defense</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_11">
+   <widget class="QLabel" name="labelBlueOffense">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -174,11 +211,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Offense</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_8">
+   <widget class="QComboBox" name="comboBoxBlueDefense">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -187,8 +227,12 @@
       <height>27</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
+    </property>
    </widget>
-   <widget class="QLabel" name="label_12">
+   <widget class="QLabel" name="labelTeamBlue">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -197,11 +241,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Team Blue</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_14">
+   <widget class="QLabel" name="labelBlueScore">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -210,11 +257,14 @@
       <height>17</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
     <property name="text">
      <string>Score</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox_10">
+   <widget class="QComboBox" name="comboBoxBlueScore">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -222,6 +272,10 @@
       <width>51</width>
       <height>27</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
     </property>
    </widget>
   </widget>
