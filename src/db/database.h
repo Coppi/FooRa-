@@ -8,6 +8,7 @@ class Database
 {
 public:
     static Database& getInstance();
+    ~Database();
     bool open();
     bool doesUserExist(const QString& userNickName);
     bool addUser(const QString &newUserNickName, const QString &newUserFirstName, const QString &newUserLastName);
@@ -17,7 +18,8 @@ public:
 
 private:
     Database() {};
-    QSqlDatabase mDb;
+    QString mConnectionName;
+//    QSqlDatabase mDb;
 };
 
 

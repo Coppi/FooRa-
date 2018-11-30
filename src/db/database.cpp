@@ -5,6 +5,17 @@
 #include <QSqlError>
 
 
+Database::~Database()
+{
+#if 0
+    if (mDb.isValid())
+    {
+        if (mDb.isOpen()) mDb.close();
+    }
+#endif
+}
+
+
 Database& Database::getInstance()
 {
     static Database db; // Guaranteed to be destroyed.
@@ -15,7 +26,7 @@ Database& Database::getInstance()
 
 bool Database::open()
 {
-    mDb = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase mDb = QSqlDatabase::addDatabase("QSQLITE");
     mDb.setDatabaseName("foora.db");
 
     if (!mDb.open())
@@ -24,6 +35,7 @@ bool Database::open()
         return false;
     }
 
+    mConnectionName = mDb.connectionName();
 #if 0
     int rc;
     sqlite3 *db;
