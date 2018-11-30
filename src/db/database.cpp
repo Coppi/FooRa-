@@ -36,19 +36,7 @@ bool Database::open()
     }
 
     mConnectionName = mDb.connectionName();
-#if 0
-    int rc;
-    sqlite3 *db;
 
-    rc = sqlite3_open("foora.db", &db);
-    if (rc)
-    {
-        QMessageBox(QMessageBox::Critical, "Can't open database", sqlite3_errmsg(db), QMessageBox::Close);
-//        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-        sqlite3_close(db);
-        return false;
-    }
-#endif
     return true;
 }
 
@@ -60,7 +48,6 @@ bool Database::doesUserExist(const QString& userNickName)
    // you should check if args are ok first...
    QSqlQuery query;
    query.prepare("SELECT COUNT(1) FROM user WHERE name = :nickName");
-//   query.prepare("SELECT COUNT(1) FROM user WHERE name = 'abc'");
    query.bindValue(":nickName", userNickName);
    if (!query.exec())
    {

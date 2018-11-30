@@ -57,7 +57,6 @@ void MainWindow::addUserPushButton_triggered()
         QMessageBox::warning(this, "Warning", "Please use at most 40 characters!");
     }
     Database &db = Database::getInstance();
-    db.open();
 
     if (db.doesUserExist(newUserNickName))
     {
