@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLineEdit" name="AddUserNickNameLineEdit">
+  <widget class="QLineEdit" name="addUserNickNameLineEdit">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -58,7 +58,7 @@
     <string>Close</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="AddUserFirstNameLineEdit">
+  <widget class="QLineEdit" name="addUserFirstNameLineEdit">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -77,7 +77,7 @@
     <number>32</number>
    </property>
   </widget>
-  <widget class="QLineEdit" name="AddUserLastNameLineEdit">
+  <widget class="QLineEdit" name="addUserLastNameLineEdit">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -96,20 +96,20 @@
     <number>32</number>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="labelNickName">
    <property name="geometry">
     <rect>
      <x>20</x>
      <y>10</y>
-     <width>59</width>
-     <height>15</height>
+     <width>71</width>
+     <height>16</height>
     </rect>
    </property>
    <property name="text">
     <string>Nickname</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="labelFirstName">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -122,7 +122,7 @@
     <string>First name</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="labelLastName">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -136,6 +136,13 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>addUserNickNameLineEdit</tabstop>
+  <tabstop>addUserFirstNameLineEdit</tabstop>
+  <tabstop>addUserLastNameLineEdit</tabstop>
+  <tabstop>addUserPushButton</tabstop>
+  <tabstop>addUserClosePushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

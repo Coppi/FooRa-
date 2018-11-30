@@ -41,13 +41,44 @@ bool Database::open()
 }
 
 
-bool Database::addUser(const QString& newUserNickName, const QString& newUserFirstName, const QString& newUserLastName)
+bool Database::doesUserExist(const QString& userNickName)
 {
-    bool success = false;
+   bool success = false;
 
    // you should check if args are ok first...
    QSqlQuery query;
-   query.prepare("INSERT INTO user (nickName, firstName, lastName) VALUES (:newUserNickName, :newUserFirstName, :newUserLastName)");
+   query.prepare("SELECT COUNT(1) FROM user WHERE name = :nickName");
+//   query.prepare("SELECT COUNT(1) FROM user WHERE name = 'abc'");
+   query.bindValue(":nickName", userNickName);
+   if (!query.exec())
+   {
+       qDebug() << "doesUserExist error:  "
+                << query.lastError();
+   }
+   else
+   {
+       if (!query.seek(0))
+       {
+           qDebug() << "doesUserExist error:  "
+                    << query.lastError();
+       }
+       else if (query.value(0).toString().toInt() > 0)
+       {
+           success = true;
+       }
+   }
+
+   return success;
+}
+
+
+bool Database::addUser(const QString& newUserNickName, const QString& newUserFirstName, const QString& newUserLastName)
+{
+   bool success = false;
+
+   // you should check if args are ok first...
+   QSqlQuery query;
+   query.prepare("INSERT INTO user (name, firstName, lastName) VALUES (:newUserNickName, :newUserFirstName, :newUserLastName)");
    query.bindValue(":newUserNickName", newUserNickName);
    query.bindValue(":newUserFirstName", newUserFirstName);
    query.bindValue(":newUserLastName", newUserLastName);

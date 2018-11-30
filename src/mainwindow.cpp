@@ -24,12 +24,12 @@ void MainWindow::on_actionAdd_User_triggered()
     addUserDialogForm.setupUi(addUserDialog);
     addUserDialog->show();
     connect (addUserDialogForm.addUserClosePushButton, SIGNAL(clicked()),addUserDialog,SLOT(close()));
-    connect (addUserDialogForm.addUserPushButton, SIGNAL(triggered()),this,SLOT(addUserPushButton_triggered()));
+    connect (addUserDialogForm.addUserPushButton, SIGNAL(clicked()),this,SLOT(addUserPushButton_triggered()));
 }
 
 void MainWindow::addUserPushButton_triggered()
 {
-    QString newUserNickName = addUserDialogForm.AddUserNickNameLineEdit->text();
+    QString newUserNickName = addUserDialogForm.addUserNickNameLineEdit->text();
     if (newUserNickName.size() < 3)
     {
         QMessageBox::warning(this, "Warning", "Please use at least 3 characters!");
@@ -38,7 +38,7 @@ void MainWindow::addUserPushButton_triggered()
     {
         QMessageBox::warning(this, "Warning", "Please use at most 40 characters!");
     }
-    QString newUserFirstName = addUserDialogForm.AddUserFirstNameLineEdit->text();
+    QString newUserFirstName = addUserDialogForm.addUserFirstNameLineEdit->text();
     if (newUserFirstName.size() < 3)
     {
         QMessageBox::warning(this, "Warning", "Please use at least 3 characters!");
@@ -47,7 +47,7 @@ void MainWindow::addUserPushButton_triggered()
     {
         QMessageBox::warning(this, "Warning", "Please use at most 40 characters!");
     }
-    QString newUserLastName = addUserDialogForm.AddUserLastNameLineEdit->text();
+    QString newUserLastName = addUserDialogForm.addUserLastNameLineEdit->text();
     if (newUserLastName.size() < 3)
     {
         QMessageBox::warning(this, "Warning", "Please use at least 3 characters!");
@@ -58,6 +58,14 @@ void MainWindow::addUserPushButton_triggered()
     }
     Database &db = Database::getInstance();
     db.open();
-    db.addUser(newUserNickName, newUserFirstName, newUserLastName);
+
+    if (db.doesUserExist(newUserNickName))
+    {
+        QMessageBox::warning(this, "Warning", "User with this nickname already exists!");
+    }
+    else
+    {
+        db.addUser(newUserNickName, newUserFirstName, newUserLastName);
+    }
 }
 
