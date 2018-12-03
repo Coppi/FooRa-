@@ -50,10 +50,14 @@ OBJECTS_DIR   = ./
 
 SOURCES       = main.cpp \
 		mainwindow.cpp \
-		db/database.cpp moc_mainwindow.cpp
+		db/database.cpp \
+		user.cpp \
+		db/dbuser.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		database.o \
+		user.o \
+		dbuser.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -113,9 +117,13 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		FooRa.pro mainwindow.h \
-		db/database.h main.cpp \
+		db/database.h \
+		user.h \
+		db/dbuser.h main.cpp \
 		mainwindow.cpp \
-		db/database.cpp
+		db/database.cpp \
+		user.cpp \
+		db/dbuser.cpp
 QMAKE_TARGET  = FooRa
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = FooRa
@@ -285,8 +293,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h db/database.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp db/database.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h db/database.h user.h db/dbuser.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp db/database.cpp user.cpp db/dbuser.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui adduser.ui addmatch.ui $(DISTDIR)/
 
 
@@ -356,6 +364,12 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 
 database.o: db/database.cpp db/database.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database.o db/database.cpp
+
+user.o: user.cpp user.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user.o user.cpp
+
+dbuser.o: db/dbuser.cpp db/dbuser.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbuser.o db/dbuser.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

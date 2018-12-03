@@ -17,10 +17,14 @@ TEMPLATE = app
 
 SOURCES  += main.cpp\
             mainwindow.cpp \
-            db/database.cpp
+            db/database.cpp \
+    user.cpp \
+    db/dbuser.cpp
 
 HEADERS  += mainwindow.h \
-            db/database.h
+            db/database.h \
+    user.h \
+    db/dbuser.h
 
 FORMS    += mainwindow.ui \
             adduser.ui \

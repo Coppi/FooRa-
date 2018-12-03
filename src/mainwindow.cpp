@@ -2,6 +2,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "db/database.h"
+#include "db/dbuser.h"
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -39,8 +41,7 @@ void MainWindow::on_actionAdd_Match_triggered()
     connect (addMatchDialogForm.cancelButton, SIGNAL(clicked()),addMatchDialog,SLOT(close()));
     connect (addMatchDialogForm.addMatchButton, SIGNAL(clicked()),this,SLOT(addMatchButton_triggered()));
 
-    Database &db = Database::getInstance();
-    QStringList users = db.getUsers();
+    QStringList users = DBUser::getUsers();
 
     addMatchDialogForm.comboBoxBlueDefense->addItems(users);
     addMatchDialogForm.comboBoxBlueOffense->addItems(users);
@@ -85,15 +86,14 @@ void MainWindow::addUserPushButton_triggered()
     {
         QMessageBox::warning(this, "Warning", "Please use at most 40 characters!");
     }
-    Database &db = Database::getInstance();
 
-    if (db.doesUserExist(newUserNickName))
+    if (DBUser::doesUserExist(newUserNickName))
     {
         QMessageBox::warning(this, "Warning", "User with this nickname already exists!");
     }
     else
     {
-        db.addUser(newUserNickName, newUserFirstName, newUserLastName);
+        DBUser::addUser(newUserNickName, newUserFirstName, newUserLastName);
     }
 }
 
