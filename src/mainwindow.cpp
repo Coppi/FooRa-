@@ -3,6 +3,7 @@
 #include "ui_mainwindow.h"
 #include "db/database.h"
 #include "db/dbuser.h"
+#include "match.h"
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -100,15 +101,58 @@ void MainWindow::addUserPushButton_triggered()
 
 void MainWindow::addMatchButton_triggered()
 {
-    QString redDefense = addMatchDialogForm.comboBoxRedDefense->itemData(addMatchDialogForm.comboBoxRedDefense->currentIndex()).toString();
-    QString redOffense = addMatchDialogForm.comboBoxRedOffense->itemData(addMatchDialogForm.comboBoxRedOffense->currentIndex()).toString();
-    QString blueDefense = addMatchDialogForm.comboBoxBlueDefense->itemData(addMatchDialogForm.comboBoxBlueDefense->currentIndex()).toString();
-    QString blueOffense = addMatchDialogForm.comboBoxBlueOffense->itemData(addMatchDialogForm.comboBoxBlueOffense->currentIndex()).toString();
+    QString redDefense = addMatchDialogForm.comboBoxRedDefense->currentText();
+    QString redOffense = addMatchDialogForm.comboBoxRedOffense->currentText();
+    QString blueDefense = addMatchDialogForm.comboBoxBlueDefense->currentText();
+    QString blueOffense = addMatchDialogForm.comboBoxBlueOffense->currentText();
     unsigned redScore = addMatchDialogForm.comboBoxRedScore->currentIndex();
     unsigned blueScore = addMatchDialogForm.comboBoxBlueScore->currentIndex();
 
+    if (redScore > Match::END_SCORE)
+    {
+        QMessageBox::warning(this, "Warning", "Red Score is bigger than maximum!");
+        return;
+    }
+
+    if (blueScore > Match::END_SCORE)
+    {
+        QMessageBox::warning(this, "Warning", "Blue Score is bigger than maximum!");
+        return;
+    }
+
+    if ((redScore != Match::END_SCORE) && (blueScore != Match::END_SCORE))
+    {
+        QMessageBox::warning(this, "Warning", "Once Score should be equal to end score!");
+        return;
+    }
+
+    qint64 redDefenseId = 0;
+    if (!DBUser::getID(redDefense, redDefenseId))
+    {
+        QMessageBox::warning(this, "Warning", "Red Defense does not exist!");
+        return;
+    }
+    qint64 redOffenseId = 0;
+    if (!DBUser::getID(redOffense, redOffenseId))
+    {
+        QMessageBox::warning(this, "Warning", "Red Offense does not exist!");
+        return;
+    }
+    qint64 blueDefenseId = 0;
+    if (!DBUser::getID(blueDefense, blueDefenseId))
+    {
+        QMessageBox::warning(this, "Warning", "Blue Defense does not exist!");
+        return;
+    }
+    qint64 blueOffenseId = 0;
+    if (!DBUser::getID(blueOffense, blueOffenseId))
+    {
+        QMessageBox::warning(this, "Warning", "Blue Offense does not exist!");
+        return;
+    }
+
     Database &db = Database::getInstance();
 
-    db.addMatch(redDefense, redOffense, blueDefense, blueOffense, redScore, blueScore);
+    db.addMatch(redDefenseId, redOffenseId, blueDefenseId, blueOffenseId, redScore, blueScore);
 }
 

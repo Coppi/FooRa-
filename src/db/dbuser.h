@@ -10,7 +10,7 @@ public:
     static bool doesUserExist(const QString& userNickName);
     static bool addUser(const QString &newUserNickName, const QString &newUserFirstName, const QString &newUserLastName);
     static QStringList getUsers();
-    static unsigned long getID(QString userNickName);
+    static bool getID(QString userNickName, qint64 & id);
 
 private:
     DBUser();

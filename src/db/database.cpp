@@ -41,10 +41,10 @@ bool Database::open()
 }
 
 
-bool Database::addMatch(const QString& redTeamDefense,
-                        const QString& redTeamOffense,
-                        const QString& blueTeamDefense,
-                        const QString& blueTeamOffense,
+bool Database::addMatch(const qint64 &redTeamDefense,
+                        const qint64 &redTeamOffense,
+                        const qint64 &blueTeamDefense,
+                        const qint64 &blueTeamOffense,
                         unsigned redScore,
                         unsigned blueScore)
 {
@@ -65,30 +65,6 @@ bool Database::addMatch(const QString& redTeamDefense,
        return false;
    }
    redDefenseUserId = query.value(0).toString().toLong();
-
-   query.bindValue(":queryName", redTeamOffense);
-   if (!query.exec() || !query.next())
-   {
-       qDebug() << "addMatch error:  " << query.lastError();
-       return false;
-   }
-   redOffenseUserId = query.value(0).toString().toLong();
-
-   query.bindValue(":queryName", blueTeamDefense);
-   if (!query.exec() || !query.next())
-   {
-       qDebug() << "addMatch error:  " << query.lastError();
-       return false;
-   }
-   blueDefenseUserId = query.value(0).toString().toLong();
-
-   query.bindValue(":queryName", blueTeamOffense);
-   if (!query.exec() || !query.next())
-   {
-       qDebug() << "addMatch error:  " << query.lastError();
-       return false;
-   }
-   blueOffenseUserId = query.value(0).toString().toLong();
 
    return success;
 }

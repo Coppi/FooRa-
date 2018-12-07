@@ -3,3 +3,4 @@
 src/FooRa
 src/*.pro.user
 build*
+src/*.db.*

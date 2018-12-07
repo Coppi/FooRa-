@@ -19,12 +19,14 @@ SOURCES  += main.cpp\
             mainwindow.cpp \
             db/database.cpp \
     user.cpp \
-    db/dbuser.cpp
+    db/dbuser.cpp \
+    match.cpp
 
 HEADERS  += mainwindow.h \
             db/database.h \
     user.h \
-    db/dbuser.h
+    db/dbuser.h \
+    match.h
 
 FORMS    += mainwindow.ui \
             adduser.ui \

@@ -78,12 +78,12 @@ QStringList DBUser::getUsers()
 }
 
 
-unsigned long DBUser::getID(QString userNickName)
+bool DBUser::getID(QString userNickName, qint64 &id)
 {
     QSqlQuery query;
-    unsigned long retVal = 0ul;
+    bool retVal = false;
 
-    query.prepare("SELECT COUNT(1) FROM user WHERE name = :userNickName");
+    query.prepare("SELECT id FROM user WHERE name = :userNickName");
     query.bindValue(":userNickName", userNickName);
     if (!query.exec())
     {
@@ -98,7 +98,8 @@ unsigned long DBUser::getID(QString userNickName)
         }
         else
         {
-            retVal = query.value(0).toString().toUInt();
+            id = query.value(0).toString().toUInt();
+            retVal = true;
         }
     }
 

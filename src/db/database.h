@@ -10,10 +10,10 @@ public:
     static Database& getInstance();
     ~Database();
     bool open();
-    bool addMatch(const QString& redTeamDefense,
-                  const QString& redTeamOffense,
-                  const QString& blueTeamDefense,
-                  const QString& blueTeamOffense,
+    bool addMatch(const qint64& redTeamDefense,
+                  const qint64& redTeamOffense,
+                  const qint64& blueTeamDefense,
+                  const qint64& blueTeamOffense,
                   unsigned redScore,
                   unsigned blueScore);
 
