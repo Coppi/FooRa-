@@ -1,6 +1,11 @@
 */*.o
+*.o
+moc_*.cpp
+moc_*.h
+ui_*.h
 */.qmake.stash
 src/FooRa
 src/*.pro.user
 build*
 src/*.db.*
+

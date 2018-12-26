@@ -20,13 +20,15 @@ SOURCES  += main.cpp\
             db/database.cpp \
     user.cpp \
     db/dbuser.cpp \
-    match.cpp
+    match.cpp \
+    db/dbmatch.cpp
 
 HEADERS  += mainwindow.h \
             db/database.h \
     user.h \
     db/dbuser.h \
-    match.h
+    match.h \
+    db/dbmatch.h
 
 FORMS    += mainwindow.ui \
             adduser.ui \

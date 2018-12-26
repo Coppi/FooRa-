@@ -35,7 +35,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = FooRa1.0.0
-DISTDIR = /home/holger/Projects/FooRa-/src/.tmp/FooRa1.0.0
+DISTDIR = /home/holger/Projects/FooRa!/src/.tmp/FooRa1.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Sql -lQt5Core -lGL -lpthread 
@@ -55,13 +55,15 @@ SOURCES       = main.cpp \
 		db/database.cpp \
 		user.cpp \
 		db/dbuser.cpp \
-		match.cpp moc_mainwindow.cpp
+		match.cpp \
+		db/dbmatch.cpp moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		database.o \
 		user.o \
 		dbuser.o \
 		match.o \
+		dbmatch.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -119,7 +121,6 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
 		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf \
@@ -140,12 +141,14 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		db/database.h \
 		user.h \
 		db/dbuser.h \
-		match.h main.cpp \
+		match.h \
+		db/dbmatch.h main.cpp \
 		mainwindow.cpp \
 		db/database.cpp \
 		user.cpp \
 		db/dbuser.cpp \
-		match.cpp
+		match.cpp \
+		db/dbmatch.cpp
 QMAKE_TARGET  = FooRa
 DESTDIR       = 
 TARGET        = FooRa
@@ -213,7 +216,6 @@ Makefile: FooRa.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.con
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
 		.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
-		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf \
@@ -292,7 +294,6 @@ Makefile: FooRa.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.con
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
 .qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
-/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/toolchain.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf:
@@ -329,8 +330,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents mainwindow.h db/database.h user.h db/dbuser.h match.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp mainwindow.cpp db/database.cpp user.cpp db/dbuser.cpp match.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents mainwindow.h db/database.h user.h db/dbuser.h match.h db/dbmatch.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp mainwindow.cpp db/database.cpp user.cpp db/dbuser.cpp match.cpp db/dbmatch.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.ui adduser.ui addmatch.ui $(DISTDIR)/
 
 
@@ -371,7 +372,7 @@ moc_mainwindow.cpp: ui_adduser.h \
 		mainwindow.h \
 		moc_predefs.h \
 		/usr/lib/qt5/bin/moc
-	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/holger/Projects/FooRa-/src -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
+	/usr/lib/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I'/home/holger/Projects/FooRa!/src' -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtSql -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -410,7 +411,8 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		ui_addmatch.h \
 		ui_mainwindow.h \
 		db/database.h \
-		db/dbuser.h
+		db/dbuser.h \
+		match.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 database.o: db/database.cpp db/database.h
@@ -424,6 +426,10 @@ dbuser.o: db/dbuser.cpp db/dbuser.h
 
 match.o: match.cpp match.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o match.o match.cpp
+
+dbmatch.o: db/dbmatch.cpp db/dbmatch.h \
+		match.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dbmatch.o db/dbmatch.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
