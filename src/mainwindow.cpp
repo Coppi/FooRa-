@@ -122,7 +122,7 @@ void MainWindow::addMatchButton_triggered()
 
     if ((redScore != Match::END_SCORE) && (blueScore != Match::END_SCORE))
     {
-        QMessageBox::warning(this, "Warning", "Once Score should be equal to end score!");
+        QMessageBox::warning(this, "Warning", "One Score should be equal to end score!");
         return;
     }
 
